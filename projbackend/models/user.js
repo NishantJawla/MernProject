@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
            maxlength: 32,
            trim: true
        },
-       lastName = {
+       lastName: {
            type: String,
            maxlength: 32,
            trim: true
@@ -52,7 +52,7 @@ userSchema.virtual("password").set(function(password){
     return this._password;
 });
 
-userSchema.method = {
+userSchema.methods = {
     authenticate: function(plainpassword){
          return this.securePassword(plainpassword) === this.encry_password;
     },

@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid');
 // const crypto = require('crypto');
 // const { v4: uuidv4 } = require('uuid');
 const userSchema = new mongoose.Schema({
-       name: {
+     name: {
            type: String,
            required: true,
            maxlength: 32,
@@ -54,7 +54,7 @@ userSchema.virtual("password").set(function(password){
 
 userSchema.methods = {
     authenticate: function(plainpassword){
-         return this.securePassword(plainpassword) === this.encry_password;
+        return this.securePassword(plainpassword) === this.encry_password;
     },
     securePassword: function(plainpassword){
         //checking whether the password is empty or not

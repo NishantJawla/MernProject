@@ -6,7 +6,9 @@ const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const { cookie } = require('express-validator');
+// My routes
 const authRoutes = require('./routes/auth');
+const userRoutes = require('./routes/user');
 //middleware
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -23,6 +25,7 @@ process.env.DATABASE
 
 //myroutes
 app.use('/api', authRoutes);
+app.use('/api',userRoutes);
 //port
 const port = process.env.PORT || 8000;
 

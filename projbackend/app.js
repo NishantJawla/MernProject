@@ -10,6 +10,7 @@ const { cookie } = require('express-validator');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 //middleware
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());

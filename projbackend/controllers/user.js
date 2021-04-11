@@ -13,7 +13,6 @@ exports.getUserById = (req, res, next, id) => {
 }
 
 exports.getUser = (req, res ) =>{
-    //todo get back here for password
     req.profile.salt  = undefined;
     req.profile.encry_password = undefined;
       return res.json(req.profile);
@@ -35,4 +34,18 @@ exports.updateUser = (req, res) => {
             res.json(user);
         }
     )
+}
+
+exports.listOrderList = (req, res) => {
+    Order.find({user: req.profile._id})
+    .populate("user", "_id name")
+    .exec((err, order) => {
+    if(err) {
+        return res.status(400).json({
+            "error": "no order in this account"
+        });
+    }
+    return res.json(order);
+    })
+    
 }

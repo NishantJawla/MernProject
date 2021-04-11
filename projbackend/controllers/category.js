@@ -14,13 +14,13 @@ exports.getCategoryById = (req, res, next,id) => {
 
 exports.createCategory = (req, res) => {
     const category = new Category(req.body);
-    category.save().then((err, category) => {
+    category.save((err, category) => {
         if(err){
             return res.status(400).json({
                 errors: "Not able to save category in DB"
             })
         }
-        res.json({category})
+        res.json({category});
     });
 }
 

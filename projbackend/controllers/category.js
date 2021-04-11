@@ -17,7 +17,8 @@ exports.createCategory = (req, res) => {
     category.save((err, category) => {
         if(err){
             return res.status(400).json({
-                errors: "Not able to save category in DB"
+                errors: "Not able to save category in DB",
+                msg: err.message
             })
         }
         res.json({category});
@@ -46,7 +47,8 @@ exports.updateCategory = (req, res) => {
     category.save((err, category) => {
         if (err) {
             return res.status(400).json({
-                errors: "Failed to update category"
+                errors: "Failed to update category",
+                error: err.message
             })
         }
         return res.json(category);
@@ -62,7 +64,7 @@ exports.removeCategory = (req, res) => {
             })
         }
         return res.json({
-            message: `${category} succesfully deleted`
+            message: `${category.name} succesfully deleted`
         })
     })
 }

@@ -155,3 +155,15 @@ exports.updateStock = (req, res, next) => {
     next();
     });
 };
+
+
+exports.getAllUniqueCategories = (req, res) => {
+    Proudct.distinct("category", {}, (err, category) => {
+    if (err) {
+        return res.status(400).json({
+        error: "No category found",
+        });
+    }
+    res.json(category);
+    });
+};
